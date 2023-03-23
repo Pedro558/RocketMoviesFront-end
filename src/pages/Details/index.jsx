@@ -1,7 +1,7 @@
 import './styles.js'
 import { Container } from './styles'
 
-export function App(){
+export function Details(){
   return(
     <Container>
       The content goes here

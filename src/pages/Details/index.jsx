@@ -1,12 +1,11 @@
 import './styles.js'
 import { Container } from './styles'
+import { Button } from '../../components/Button'
 
 export function Details(){
   return(
     <Container>
-      <h1>First page</h1>
-      <p>Some text</p>
-      <button>Click me</button>
+      <Button title = 'Voltar' loading></Button>
 
     </Container>
   )

@@ -4,7 +4,10 @@ import { Container } from './styles'
 export function Details(){
   return(
     <Container>
-      The content goes here
+      <h1>First page</h1>
+      <p>Some text</p>
+      <button>Click me</button>
+
     </Container>
   )
 }

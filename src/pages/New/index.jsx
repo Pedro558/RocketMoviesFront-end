@@ -23,7 +23,7 @@ export function New() {
 
           <Section title='Links úteis'>
             <NoteItem value='https://rocketseat.com'/>
-            <NoteItem isNew/>
+            <NoteItem isNew placeholder='Novo link'/>
           </Section>
         </Form>
       </main>

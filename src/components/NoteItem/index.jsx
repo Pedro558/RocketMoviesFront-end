@@ -7,7 +7,11 @@ export function NoteItem({ isNew, value, onClick, ...rest }) {
     <Container isNew={isNew}>
       <input type='text' value={value} readOnly={!isNew} {...rest} />
 
-      <button onClick={onClick} type='button'>
+      <button 
+        onClick={onClick} 
+        type='button'
+        className={isNew ? 'button-add' : 'button-delete'}
+      >
         {isNew ? <FiPlus /> : <FiX />}
       </button>
     </Container>

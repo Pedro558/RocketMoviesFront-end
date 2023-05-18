@@ -37,8 +37,28 @@ export function Home(){
                 {id: '3', name: 'TagName'}
               ]
             }}/>
+
+          <Note data={{
+              title: 'React',
+              tags: [
+                {id: '1', name: 'TagName'},
+                {id: '2', name: 'TagName'},
+                {id: '3', name: 'TagName'}
+              ]
+            }}/>
+
+          <Note data={{
+              title: 'React',
+              tags: [
+                {id: '1', name: 'TagName'},
+                {id: '2', name: 'TagName'},
+                {id: '3', name: 'TagName'}
+              ]
+            }}/>
             
           </Section>
+
+          
         </Content>
 
         <NewNote to='/new'>

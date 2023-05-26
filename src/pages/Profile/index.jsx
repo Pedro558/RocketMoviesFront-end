@@ -6,6 +6,10 @@ import { Container, Form, Avatar } from "./styles";
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
 
+import { api } from '../../services/api'
+
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
+
 import { Link } from 'react-router-dom'
 
 import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from 'react-icons/fi'
@@ -19,7 +23,9 @@ export function Profile(){
   const [passwordOld, setPasswordOld] = useState()
   const [passwordNew, setPasswordNew] = useState()
 
-  const [avatar, setAvatar] = useState(user.avatar)
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
+
+  const [avatar, setAvatar] = useState(avatarUrl)
   const [avatarFile, setAvatarFile] = useState(null)
 
   function handleChangeAvatar(e){

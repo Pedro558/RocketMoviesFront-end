@@ -31,4 +31,8 @@ export default createGlobalStyle`
   button:hover, a:hover{
     filter: brightness(0.9);
   }
+
+  button:focus{
+    border: 1px solid ${({ theme }) =>theme.COLORS.WHITE}
+  }
 `

@@ -29,7 +29,10 @@ export function New() {
   function handleAddTag(){
     setTags(prevState => [...prevState, newTag])
     setNewTag('')
+  }
 
+  function handleRemoveTag(deleted){
+    setTags(prevState => prevState.filter(tag => tag !== deleted))
   }
 
   return (
@@ -74,12 +77,12 @@ export function New() {
                   <NoteItem 
                     key={index}
                     value={tag}
-                    
+                    onClick={() => handleRemoveTag(tag)}
                   />
                 ))
               }
 
-              <NoteItem value='react'/>
+              
               <NoteItem 
                 isNew
                 placeholder='Nova tag'

@@ -11,6 +11,9 @@ import { Link } from 'react-router-dom'
 import { Container, Form } from "./styles";
 
 export function New() {
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')  
+
   const [links, setLinks] = useState([])
   const [newLink, setNewLink] = useState("")
   
@@ -46,8 +49,14 @@ export function New() {
             <Link to='/'>voltar</Link>
           </header>
 
-          <Input placeholder='Título' />
-          <Textarea placeholder='Observações' />
+          <Input 
+            placeholder='Título' 
+            onChange={e => setTitle(e.target.value)}
+          />
+          <Textarea 
+            placeholder='Observações' 
+            onChange={e => setDescription(e.target.value)}
+          />
 
           <Section title='Links úteis'>
             {

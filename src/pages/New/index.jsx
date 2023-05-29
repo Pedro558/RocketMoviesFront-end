@@ -44,6 +44,19 @@ export function New() {
 
   async function handleNewNote(){
     try {
+      if(!title){
+        return alert('Digite o título da nota')
+      }
+      
+      if(newLink){
+        return alert('Link não preenchido adequadamente')
+      }
+
+      if(newTag){
+        return alert('Tag não preenchida adequadamente')
+      }
+
+
       await api.post('/notes', {
         title,
         description,
@@ -54,6 +67,7 @@ export function New() {
       alert('Nota criada com sucesso')
       navigate('/')
     } catch (error) {
+      console.log(error)
       alert(`Algo deu errado: ${error.message}`)
     }
   }

@@ -6,7 +6,9 @@ import { Textarea } from "../../components/Textarea";
 import { Section } from "../../components/Section";
 import { NoteItem } from "../../components/NoteItem";
 import { Button } from "../../components/Button";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
+import { api } from '../../services/api'
 
 import { Container, Form } from "./styles";
 
@@ -19,6 +21,8 @@ export function New() {
   
   const [tags, setTags] = useState([])
   const [newTag, setNewTag] = useState("")
+
+  const navigate = useNavigate()
 
   function handleAddLink(){
     setLinks(prevState => [...prevState, newLink])
@@ -36,6 +40,22 @@ export function New() {
 
   function handleRemoveTag(deleted){
     setTags(prevState => prevState.filter(tag => tag !== deleted))
+  }
+
+  async function handleNewNote(){
+    try {
+      await api.post('/notes', {
+        title,
+        description,
+        tags,
+        links
+      })
+
+      alert('Nota criada com sucesso')
+      navigate('/')
+    } catch (error) {
+      alert(`Algo deu errado: ${error.message}`)
+    }
   }
 
   return (
@@ -102,7 +122,10 @@ export function New() {
             </div>
           </Section>
 
-          <Button title='Salvar'/>
+          <Button 
+            title='Salvar' 
+            onClick={handleNewNote}
+          />
         </Form>
       </main>
     </Container>

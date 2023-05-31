@@ -45,15 +45,15 @@ export function New() {
   async function handleNewNote(){
     try {
       if(!title){
-        return alert('Digite o título da nota')
+        throw new Error('Digite o título da nota')
       }
       
-      if(newLink){
-        return alert('Link não preenchido adequadamente')
+      if(newLink === '' && links.length == 0){
+        throw new Error('Link não preenchido adequadamente')
       }
 
-      if(newTag){
-        return alert('Tag não preenchida adequadamente')
+      if(newTag === '' && tags.length == 0){
+        throw new Error('Tag não preenchida adequadamente')
       }
 
 

@@ -1,9 +1,9 @@
 import { Container } from './styles'
 import { Tag } from '../../components/Tag'
 
-export function Note({ data, ...rest}){
+export function Note({ data, onClick, ...rest}){
   return(
-    <Container>
+    <Container onClick={onClick}>
       <h1>{data.title}</h1>
 
       {

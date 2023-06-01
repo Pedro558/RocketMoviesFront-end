@@ -12,8 +12,10 @@ import { Section } from '../../components/Section'
 import { Note } from '../../components/Note'
 
 export function Home(){
+  const [search, setSearch] = useState('')
   const [tags, setTags] = useState([])
   const [tagsSelected, setTagsSelected] = useState([])
+  const [notes, setNotes] = useState([])
 
   function handleTagSelected(tagName){
     const alreadySelected = tagsSelected.includes(tagName)
@@ -39,6 +41,15 @@ export function Home(){
 
     fetchTags()
   })
+
+  useEffect(() =>{
+    async function fetchNotes(){
+      const response = await api.get(`/notes?title=${search}&tags=${tagsSelected}`)
+      setNotes(response.data)
+    }
+
+    fetchNotes()
+  }, [tagsSelected, search])
 
 
   return(
@@ -70,38 +81,25 @@ export function Home(){
         </Menu>
 
         <Search>
-          <Input placeholder='Pesquisar pelo título' icon={FiSearch}/>
+          <Input 
+            placeholder='Pesquisar pelo título' 
+            icon={FiSearch}
+            onChange={() => setSearch(e.target.value)}
+          />
         </Search>
 
         <Content>
           <Section title='Minhas notas'>
-            <Note data={{
-              title: 'React',
-              tags: [
-                {id: '1', name: 'TagName'},
-                {id: '2', name: 'TagName'},
-                {id: '3', name: 'TagName'}
-              ]
-            }}/>
+            {
+              notes.map(note => (
+                <Note
+                  key={note.id}
+                  data={note}
+                />  
 
-          <Note data={{
-              title: 'React',
-              tags: [
-                {id: '1', name: 'TagName'},
-                {id: '2', name: 'TagName'},
-                {id: '3', name: 'TagName'}
-              ]
-            }}/>
-
-          <Note data={{
-              title: 'React',
-              tags: [
-                {id: '1', name: 'TagName'},
-                {id: '2', name: 'TagName'},
-                {id: '3', name: 'TagName'}
-              ]
-            }}/>
-            
+              ))
+            }
+                  
           </Section>
 
           

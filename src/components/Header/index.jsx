@@ -2,7 +2,7 @@ import { Container, Profile, Logout } from './styles'
 import { RiShutDownLine } from 'react-icons/ri'
 
 import { useNavigate } from 'react-router-dom'
-
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
 import { api } from '../../services/api'
 
 import { useAuth } from '../../hooks/auth'
